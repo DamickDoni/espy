@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --bail",
     "coverage": "jest --coverage",
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info",    
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.8",
     "babel-jest": "^27.0.6",
+    "coveralls": "^3.1.1",
     "jest": "^27.0.6"
   }
 }
