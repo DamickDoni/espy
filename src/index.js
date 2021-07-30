@@ -47,9 +47,11 @@ const Epsy = (function () {
     });
     this.events.push(data);
   };
-  Epsy.prototype.sub = function (watcher) {
+  const checkOption = (flag, watcher, events) => flag ? watcher(events[events.length - 1]) : watcher(events)
+
+  Epsy.prototype.sub = function (watcher, last) {
     const events = this.events;
-    watcher(events);
+    checkOption(last, watcher, events)
     this.watchers = this.watchers.concat(watcher);
   };
   Epsy.prototype.cancel = function (watcher) {

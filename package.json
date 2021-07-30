@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest --bail",
+    "coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -18,11 +19,16 @@
   },
   "homepage": "https://github.com/DamickDoni/espy#readme",
   "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.8",
+    "babel-jest": "^27.0.6",
     "jest": "^27.0.6"
   }
 }
