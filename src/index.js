@@ -4,7 +4,7 @@ export const WATCHER = "__WATCHER__";
 
 const Epsy = (function () {
   function Epsy(namespace) {
-    this.dispatch = this.push;
+    this.dispatch = this.pub;
     Epsy.init();
     this.namespace = namespace;
   }
