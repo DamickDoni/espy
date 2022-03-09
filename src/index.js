@@ -1,6 +1,6 @@
-export const EPSY = "__EPSY__";
-export const EVENTS = "__EVENTS__";
-export const WATCHER = "__WATCHER__";
+const EPSY = "__EPSY__";
+const EVENTS = "__EVENTS__";
+const WATCHER = "__WATCHER__";
 
 const Epsy = (function () {
   function Epsy(namespace) {
@@ -61,4 +61,4 @@ const Epsy = (function () {
   return Epsy;
 })();
 const _Epsy = Epsy;
-export { _Epsy as Epsy };
+exports.Epsy = _Epsy
