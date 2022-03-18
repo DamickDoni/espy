@@ -1,11 +1,11 @@
 /**
 * @jest-environment jsdom
 */
+const EPSY = "__EPSY__";
+const EVENTS = "__EVENTS__";
+const WATCHER = "__WATCHER__";
 
 import {
-    EPSY,
-    EVENTS,
-    WATCHER,
     Epsy,
 } from '../index';
 
