@@ -1,0 +1,36 @@
+{
+  "name": "@donny1337/espy",
+  "version": "1.1.4",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --bail",
+    "coverage": "jest --coverage",
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info",    
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamickDoni/espy.git"
+  },
+  "author": "dominik srednicki | dominik.srednicki@damick.de",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DamickDoni/espy/issues"
+  },
+  "homepage": "https://github.com/DamickDoni/espy#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.8",
+    "babel-jest": "^27.0.6",
+    "coveralls": "^3.1.1",
+    "jest": "^27.0.6"
+  }
+}
