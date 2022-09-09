@@ -1,72 +1,72 @@
 /**
 * @jest-environment jsdom
 */
-const ESPY = "__ESPY__";
+const EPSY = "__EPSY__";
 const EVENTS = "__EVENTS__";
 const WATCHER = "__WATCHER__";
 
 import {
-    Espy,
+    Epsy,
 } from '../index';
 
 const namespace = 'foobar';
 
 let windowSpy;
-let espy;
+let epsy;
 const mock = 'foo';
 const mockEvents = ['foo', 'bar'];
 const mockedFn = jest.fn();
 
 beforeEach(() => {
     jest.clearAllMocks();
-    espy = new Espy(namespace);
+    epsy = new Epsy(namespace);
     windowSpy = jest.spyOn(global, 'window', 'get');
 
 });
 afterEach(() => {
-    window[ESPY][WATCHER][namespace] = [];
-    window[ESPY][EVENTS][namespace] = [];
+    window[EPSY][WATCHER][namespace] = [];
+    window[EPSY][EVENTS][namespace] = [];
     windowSpy.mockRestore();
 });
-describe('espy', () => {
-    it('should add espy to global window', () => {
-        const espyObject = window[ESPY];
-        expect(espyObject).toBeDefined();
+describe('epsy', () => {
+    it('should add epsy to global window', () => {
+        const epsyObject = window[EPSY];
+        expect(epsyObject).toBeDefined();
     });
-    it('should add empty espy objects to global window', () => {
-        const espyObject = window[ESPY];
-        expect(Object.keys(window[ESPY])).toEqual([WATCHER, EVENTS]);
-        expect(espyObject[EVENTS][namespace]).toHaveLength(0)
+    it('should add empty epsy objects to global window', () => {
+        const epsyObject = window[EPSY];
+        expect(Object.keys(window[EPSY])).toEqual([WATCHER, EVENTS]);
+        expect(epsyObject[EVENTS][namespace]).toHaveLength(0)
     });
     it('should pub a event', () => {
-        const espyEvent = window[ESPY][EVENTS][namespace]
-        espy.pub(mock);
-        expect(espyEvent[0]).toEqual(mock)
+        const epsEvent = window[EPSY][EVENTS][namespace]
+        epsy.pub(mock);
+        expect(epsEvent[0]).toEqual(mock)
     });
     it('should sub add a watcher', () => {
-        espy.sub(mockedFn);
-        const espyObj = window[ESPY][WATCHER][namespace];
-        expect(espyObj).toHaveLength(1);
+        epsy.sub(mockedFn);
+        const epsyObj = window[EPSY][WATCHER][namespace];
+        expect(epsyObj).toHaveLength(1);
     });
     it('should sub trigger a event', () => {
-        const espyEvent = window[ESPY][EVENTS][namespace]
-        espy.sub(mockedFn);
-        espy.pub(mock);
-        expect(espyEvent).toEqual([mock]);
+        const epsyEvent = window[EPSY][EVENTS][namespace]
+        epsy.sub(mockedFn);
+        epsy.pub(mock);
+        expect(epsyEvent).toEqual([mock]);
     });
     it('should sub and return all events', () => {
-        espy.sub(mockedFn, false);
-        mockEvents.map(e => espy.pub(e));
+        epsy.sub(mockedFn, false);
+        mockEvents.map(e => epsy.pub(e));
         expect(mockedFn).toHaveBeenCalledWith(mockEvents);
     });
     it('should sub and return last event', () => {
-        mockEvents.map(e => espy.pub(e));
-        espy.sub(mockedFn, true);
+        mockEvents.map(e => epsy.pub(e));
+        epsy.sub(mockedFn, true);
         expect(mockedFn).toHaveBeenCalledWith(mockEvents[1]);
     });
-    it('should cancel espy sub', () => {
-        espy.cancel(mockedFn);
-        const espyWatcher = window[ESPY][WATCHER][namespace]
-        expect(espyWatcher).toHaveLength(0);
+    it('should cancel epsy sub', () => {
+        epsy.cancel(mockedFn);
+        const epsyWatcher = window[EPSY][WATCHER][namespace]
+        expect(epsyWatcher).toHaveLength(0);
     });
 });
